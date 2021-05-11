@@ -1,7 +1,7 @@
 {
   "name": "@nexssp/ensure",
   "description": "Make sure that is installed...",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://nexss.com",
   "main": "src/ensure.js",
   "files": [
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "node bin/nexssp-ensure find",
     "test:i": "node bin/nexssp-ensure jq --install=\"scoop install jq\"",
-    "test:wsl": "node bin/nexssp-ensure \"wsl ddd\"",
+    "test:wsl": "node bin/nexssp-ensure \"wsl jq\" --install=\"wsl -u root apt -y install jq\" --progress",
     "test:wsl2": "node bin/nexssp-ensure ls --wsl"
   },
   "author": {
@@ -19,7 +19,7 @@
     "url": "https://nexss.com"
   },
   "bin": {
-    "nexssp-test": "bin/nexssp-ensure.js"
+    "nexssp-ensure": "bin/nexssp-ensure.js"
   },
   "keywords": [
     "test",

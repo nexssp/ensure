@@ -156,8 +156,17 @@ module.exports.checkPath = (pkg) => {
   if (pkg.startsWith("wsl")) {
     const wsl = module.exports.which("wsl");
     if (!wsl) {
-      const wslInfo = require("../config/wslInstallInfo");
-      wslInfo();
+      console.log(`${bold("wsl")} command has not been found.`);
+      console.log(
+        `For this language you need to have ${bold(
+          "Windows Subsystem Linux (WSL)"
+        )} enabled.`
+      );
+      console.log(
+        `More information you can find here: ${bold(
+          "https://github.com/nexssp/cli/wiki/WSL-(Windows-Subsystem-Linux)"
+        )}`
+      );
       process.exit(1);
     }
 
@@ -169,10 +178,10 @@ module.exports.checkPath = (pkg) => {
 
 module.exports.checkWSLCommand = (command) => {
   try {
-    const r = execSync(`wsl ${command}`, {
-      stdio: ["ignore", "ignore", "ignore"],
+    const r = execSync(`wsl which ${command}`, {
+      stdio: ["ignore", "pipe", "ignore"],
     });
-    return true;
+    return r.toString();
   } catch (error) {
     // console.log("command not found", error);
   }

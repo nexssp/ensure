@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { ensureInstalled } = require("../");
-const { bold } = require("@nexssp/ansi");
+const { bold, green } = require("@nexssp/ansi");
 const { error } = require("@nexssp/logdebug");
 
 (async () => {
@@ -32,13 +32,7 @@ const { error } = require("@nexssp/logdebug");
   }
 
   const path = ensureInstalled(cliArgs._[0], install, { progress, verbose });
-  if (!wsl) {
-    console.log(`Found at: ${bold(path)}`);
-  } else {
-    console.log(`Command ${bold(cliArgs._[0])} exists.`);
-  }
+
+  console.log(`Found at: ${bold(path)}`);
   console.timeEnd(bold("@nexssp/ensure"));
 })();
-//    const percentage = 100 - (compressed.code.length / code.length) * 100;
-// const percentageRounded = Math.round(percentage, 2);
-//
