@@ -2,10 +2,10 @@
 
 ```sh
 # or on js ensureInstalled('git')
-nexssp-ensure git # will install git on any os you are.
+nexssp-ensure git # will install git on any os you are. If it is installed it will return the path.
 ```
 
-IT's more then **@nexssp/os** function as it has `translator`. What it means? that for example on Gentoo to install git you need to put `emerge dev-vcs/git` (not git). We cover that in the **@nexssp/extend**. We will be building the database of what and which distro what kind of changes has. For example:
+It's more then **@nexssp/os** function as it has `translator`. What it means? that for example on Gentoo to install git you need to put `emerge dev-vcs/git` (not git). We cover that in the **@nexssp/extend**. We will be building the database of what and which distro what kind of changes has. For example:
 
 ## Translator file example
 
