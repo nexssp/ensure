@@ -6,7 +6,7 @@ const Windows = os.getTags(os.distros.WINDOWS, 1).first()
 const Windows10 = os.getTags(os.distros.WINDOWS, 10.0).second()
 const Windows100 = os.getTags().third()
 module.exports = {
-  ['linux']: {
+  linux: {
     install: `php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 HASH="$(wget -q -O - https://composer.github.io/installer.sig)"
 php -r "if (hash_file('sha384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"

@@ -64,3 +64,36 @@ nexssp-ensure jq --install="apt install jq"
 # Windows Subsystem for Linux
 nexssp-ensure "wsl jq" --install="wsl -u root apt install jq"
 ```
+
+## Development
+
+### Translator files
+
+#### Example 1
+
+When ensure installing the packages it is looking at the translator files. Here are the examples:
+
+```js
+const os = require('@nexssp/os/legacy')
+
+// first tag means all versions. We specified 1, because it does matter for the first tag which is Windows
+const Windows = os.getTags(os.distros.WINDOWS, 1).first() // first is always Windows. You could use also "win32", "linux", "darwin" .. all from https://nodejs.org/api/process.html#process_process_platform, but also distros based on @nexssp/os tags
+
+module.exports = {
+  [Windows]: {
+    install: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" ; powershell -command "iex (new-object net.webclient).downloadstring('https://get.scoop.sh')"`,
+  },
+}
+```
+
+### Example 2
+
+```js
+const os = require('@nexssp/os/legacy')
+
+const GentooFirst = os.getTags(os.distros.GENTOO, 1).first()
+
+module.exports = {
+  [GentooFirst]: 'dev-vcs/git', // All gentoos will have this other systems has git, other systems will have standard.
+}
+```
