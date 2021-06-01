@@ -1,3 +1,3 @@
-const { ensure } = require('../lib')
+const { ensureInstalled } = require('../')
 
-console.log(ensure('git'))
+console.log(ensureInstalled('lua', { progress: true }))
