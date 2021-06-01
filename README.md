@@ -47,8 +47,13 @@ const path = ensureInstalled('jq', 'apt install jq', {
   progress: cliArgs.progress,
 })
 
+// You can also pass 2 parameters and install command will be generated based on @nexssp/os and translators.
+const path2 = ensureInstalled('lua', {
+  progress: cliArgs.progress,
+})
+
 // Windows Subsystem for Linux
-const path = ensureInstalled('wsl jq', 'wsl -u root apt install jq')
+const path3 = ensureInstalled('wsl jq', 'wsl -u root apt install jq')
 ```
 
 ## CLI tool
