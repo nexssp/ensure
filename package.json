@@ -1,7 +1,7 @@
 {
   "name": "@nexssp/ensure",
   "description": "Install easy on multiple os, check also @nexssp/os for different functions..",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "homepage": "https://nexss.com",
   "main": "lib/ensure.js",
   "files": [
