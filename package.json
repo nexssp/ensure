@@ -5,7 +5,8 @@
   "homepage": "https://nexss.com",
   "main": "lib/ensure.js",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "translators/**/*"
   ],
   "scripts": {
     "test": "node bin/nexssp-ensure find",
