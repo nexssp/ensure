@@ -9,4 +9,7 @@ module.exports = {
   [Windows]: {
     install: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" ; powershell -command "iex (new-object net.webclient).downloadstring('https://get.scoop.sh')"`,
   },
+  linux: {
+    install: `echo "Scoop is a package manager which works only for windows platforms."`,
+  },
 }
