@@ -7,7 +7,7 @@ const Windows10 = os.getTags(os.distros.WINDOWS, 10.0).second()
 const Windows100 = os.getTags().third()
 module.exports = {
   [Windows]: {
-    install: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" ; powershell -command "iex (new-object net.webclient).downloadstring('https://get.scoop.sh')"`,
+    install: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" && powershell -command "iex (new-object net.webclient).downloadstring('https://get.scoop.sh')"`,
   },
   linux: {
     install: `echo "Scoop is a package manager which works only for windows platforms."`,
