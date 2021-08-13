@@ -1,7 +1,7 @@
 {
   "name": "@nexssp/ensure",
   "description": "Install easy on multiple os, check also @nexssp/os for different functions..",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "homepage": "https://nexss.com",
   "main": "lib/ensure.js",
   "files": [
@@ -23,17 +23,18 @@
     "nexssp-ensure": "bin/nexssp-ensure.js"
   },
   "keywords": [
-    "test",
-    "fast",
-    "easy",
-    "nexss"
+    "os",
+    "install",
+    "ensure",
+    "nexss",
+    "wsl"
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/nexssp/test.git"
+    "url": "git+ssh://git@github.com/nexssp/ensure.git"
   },
   "bugs": {
-    "url": "https://github.com/nexssp/test/issues",
+    "url": "https://github.com/nexssp/ensure/issues",
     "email": "mapoart@gmail.com"
   },
   "license": "MIT",
