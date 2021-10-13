@@ -9,7 +9,8 @@
     "translators/**/*"
   ],
   "scripts": {
-    "test": "node bin/nexssp-ensure find",
+    "test": "nexssp-test --debug",
+    "test:find": "node bin/nexssp-ensure find",
     "test:i": "node bin/nexssp-ensure jq --install=\"scoop install jq\"",
     "test:wsl": "node bin/nexssp-ensure \"wsl jq\" --install=\"wsl -u root apt -y install jq\" --progress",
     "test:wsl2": "node bin/nexssp-ensure ls --wsl"

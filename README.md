@@ -35,8 +35,7 @@ const result = ensureInstalled("git") => it will automatically install git on yo
 ### Functions
 
 - `ensureInstalled(command/package, installCommand, options)`
-- `cmd(command)` - return function which can execute commands starts from 'command' - examples soon.
-- `which(command)` - returns path of the command, false if not exists.
+- `which(command)` - returns path of the command/program, false if does not exist.
 
 ### Examples
 
