@@ -1,0 +1,45 @@
+name: nexssp-ensure CI
+
+on:
+  push:
+    branches: [fixing-github-workflow]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [16.x, 17.x]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+
+      - name: Install packages
+        if: steps.restore-build.outputs.cache-hit != 'true'
+        run: |
+          npm install -g .
+          npm run build --if-present
+      # ls /root/.nexss/packages/
+      # nexss Nexss/Test/Sequences --seq=mytestdata --debug
+      - name: System info
+        run: npx @nexssp/os env
+      - run: npx @nexssp/os update && yarn test
+        if: ${{ env.ACT }}
+      - run: sudo npx @nexssp/os update && sudo yarn test
+        if: ${{ !env.ACT }}
