@@ -40,6 +40,6 @@ jobs:
       - name: System info
         run: npx @nexssp/os env
       - run: npx @nexssp/os update && yarn test
-        if: ${{ env.ACT }}
+        if: ${{ env.ACT || runner.os == 'Windows'  }}
       - run: sudo npx @nexssp/os update && sudo yarn test
-        if: ${{ !env.ACT }}
+        if: ${{ !env.ACT && runner.os != 'Windows' }}
