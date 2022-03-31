@@ -1,4 +1,5 @@
 const os = require('@nexssp/os/legacy')
+const sudo = os.sudo()
 
 // first tag means all versions. We specified 1, because it does matter for the first tag
 const GentooFirst = os.getTags(os.distros.GENTOO, 1).first()
@@ -7,7 +8,9 @@ const Windows10 = os.getTags(os.distros.WINDOWS, 10.0).second()
 const Windows100 = os.getTags().third()
 module.exports = {
   [Windows]: {
-    install: `iwr -useb get.scoop.sh -outfile 'install.ps1' && .\\install.ps1 -RunAsAdmin && echo Please restart your terminal window.`,
+    install: `iwr -useb get.scoop.sh -outfile 'install.ps1' && .\\install.ps1 ${
+      sudo ? '-RunAsAdmin' : ''
+    } && echo Please restart your terminal window.`,
     installLegacy: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" && powershell -command "iex (new-object net.webclient).downloadstring('https://get.scoop.sh')" && echo Please restart your terminal window.`,
   },
   linux: {

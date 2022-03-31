@@ -35,10 +35,11 @@ jobs:
       - name: Install packages
         if: steps.restore-build.outputs.cache-hit != 'true'
         run: |
-          npx @nexssp/os update # updates packages os dependent
           npm install -g .
           npm run build --if-present
       # ls /root/.nexss/packages/
       # nexss Nexss/Test/Sequences --seq=mytestdata --debug
-
-      - run: npx @nexssp/os env && yarn test
+      - run: npx @nexssp/os update && yarn test
+        if: ${{ env.ACT }}
+      - run: sudo npx @nexssp/os update && sudo yarn test
+        if: ${{ !env.ACT }}
