@@ -44,6 +44,7 @@ jobs:
         if: ${{ runner.os == 'Windows'}}
       - name: Reload pwsh after setup path
         run: . ./restartSession.ps1 ; ress
+        if: ${{ runner.os == 'Windows'}}
       - run: npx @nexssp/os update && yarn test
         shell: pwsh
         if: ${{ env.ACT || runner.os == 'Windows'}}
