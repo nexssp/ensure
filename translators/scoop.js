@@ -10,7 +10,7 @@ module.exports = {
   [Windows]: {
     install: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" && powershell -command "Invoke-WebRequest -useb get.scoop.sh -outfile 'install.ps1' ; .\\install.ps1 ${
       sudo ? '-RunAsAdmin' : ''
-    }" && echo Please restart your terminal window.`,
+    }" && & $profile`,
     installLegacy: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" && powershell -command "iex (new-object net.webclient).downloadstring('https://get.scoop.sh')" && echo Please restart your terminal window.`,
   },
   linux: {
