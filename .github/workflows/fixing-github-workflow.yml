@@ -42,6 +42,8 @@ jobs:
       - name: Setup Github Actions Path for scoop
         run: mkdir $HOME/scoop/shims && echo "$HOME/scoop/shims" >> $GITHUB_PATH
         if: ${{ runner.os == 'Windows'}}
+      - name: Reload pwsh after setup path
+        run: . ./restartSession.ps1 ; ress
       - run: npx @nexssp/os update && yarn test
         shell: pwsh
         if: ${{ env.ACT || runner.os == 'Windows'}}
