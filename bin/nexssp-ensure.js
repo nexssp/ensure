@@ -2,6 +2,10 @@
 
 const plugin = require('@nexssp/plugin')
 
+if (process.env.PATH.includes('\\Scoop\\shims')) {
+  console.log('WORKS!')
+}
+
 // const _params = require('minimist')(process.argv.slice(2))
 const pluginRoot = plugin({
   path: `${__dirname}/..`,
