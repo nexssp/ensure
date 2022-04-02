@@ -1,5 +1,5 @@
 const os1 = require('@nexssp/os')
-const os = os1()
+const os = new os1()
 const sudo = os.sudo()
 
 console.log('SUUUUUUUUDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO', sudo())
