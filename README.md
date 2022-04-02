@@ -1,5 +1,7 @@
 # @nexssp/ensure
 
+NEW: **02.04.2022** Added workflows + support for MacOS.
+
 ```sh
 # or on js ensureInstalled('git')
 nexssp-ensure git # will install git on any os you are. If it is installed it will return the path.

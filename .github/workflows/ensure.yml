@@ -3,15 +3,13 @@ name: nexssp-ensure CI
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
 
 jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [16.x, 17.x]
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        node-version: [16.x]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -41,7 +39,13 @@ jobs:
       # nexss Nexss/Test/Sequences --seq=mytestdata --debug
       - name: System info
         run: npx @nexssp/os env
-      - run: npx @nexssp/os update && yarn test
-        if: ${{ env.ACT }}
-      - run: sudo npx @nexssp/os update && sudo yarn test
-        if: ${{ !env.ACT }}
+      - name: Setup Github Actions Path for scoop
+        run: mkdir $HOME/scoop/shims && echo "$HOME/scoop/shims" >> $GITHUB_PATH
+        if: ${{ runner.os == 'Windows'}}
+      - run: yarn test
+        shell: pwsh
+        if: ${{ env.ACT || runner.os == 'Windows'}}
+      - run: sudo yarn test
+        if: ${{ !env.ACT && runner.os == 'Linux' }}
+      - run: yarn test
+        if: ${{ runner.os == 'macOS' }}
