@@ -53,9 +53,9 @@
     "@nexssp/ansi": "^1.1.5",
     "@nexssp/data": "^1.0.8",
     "@nexssp/logdebug": "^1.0.20",
-    "@nexssp/os": "^2.0.24",
+    "@nexssp/os": "^2.0.25",
     "@nexssp/plugin": "^1.0.9",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.6"
   },
   "devDependencies": {
     "@nexssp/test": "^1.1.15"
