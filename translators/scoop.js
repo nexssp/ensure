@@ -8,9 +8,11 @@ const Windows10 = os.getTags(os.distros.WINDOWS, 10.0).second()
 const Windows100 = os.getTags().third()
 module.exports = {
   [Windows]: {
-    install: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" && powershell -command "Invoke-WebRequest -useb get.scoop.sh -outfile 'install.ps1' ; .\\install.ps1 ${
-      sudo ? '-RunAsAdmin' : ''
-    }" && echo You may need to restart terminal window.`,
+    install:
+      os.getShell() +
+      ` -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" && powershell -command "Invoke-WebRequest -useb get.scoop.sh -outfile 'install.ps1' ; .\\install.ps1 ${
+        sudo ? '-RunAsAdmin' : ''
+      }" && echo You may need to restart terminal window.`,
     installLegacy: `powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser" && powershell -command "iex (new-object net.webclient).downloadstring('https://get.scoop.sh')" && echo Please restart your terminal window.`,
   },
   linux: {
