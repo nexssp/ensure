@@ -2,6 +2,8 @@ const os1 = require('@nexssp/os')
 const os = os1()
 const sudo = os.sudo()
 
+console.log('SUUUUUUUUDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO', sudo())
+
 // first tag means all versions. We specified 1, because it does matter for the first tag
 const GentooFirst = os.getTags(os.distros.GENTOO, 1).first()
 const Windows = os.getTags(os.distros.WINDOWS, 1).first()
