@@ -39,14 +39,9 @@ jobs:
       # nexss Nexss/Test/Sequences --seq=mytestdata --debug
       - name: System info
         run: npx @nexssp/os env
-      - name: Setup Github Actions Path for scoop
-        run: mkdir $HOME/scoop/shims && echo "$HOME/scoop/shims" >> $GITHUB_PATH
-        if: ${{ runner.os == 'Windows'}}
       - run: yarn test
         shell: pwsh
         if: ${{ env.ACT || runner.os == 'Windows'}}
-      - run: scoop
-        if: ${{ runner.os == 'Windows'}}
       - run: sudo yarn test
         if: ${{ !env.ACT && runner.os == 'Linux' }}
       - run: yarn test
