@@ -2,7 +2,7 @@ name: nexssp-ensure CI
 
 on:
   push:
-    branches: [master]
+    branches: [setup-workflow]
 
 jobs:
   build:
