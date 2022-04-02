@@ -37,16 +37,16 @@ jobs:
           npm run build --if-present
       # ls /root/.nexss/packages/
       # nexss Nexss/Test/Sequences --seq=mytestdata --debug
-      - name: System info
-        run: npx @nexssp/os env
+      # - name: System info
+      #   run: npx @nexssp/os env
       - name: Setup Github Actions Path for scoop
         run: mkdir $HOME/scoop/shims && echo "$HOME/scoop/shims" >> $GITHUB_PATH
         if: ${{ runner.os == 'Windows'}}
       # - name: Reload pwsh after setup path
       #   run: . ./restartSession.ps1 ; ress
         if: ${{ runner.os == 'Windows'}}
-      - run: npx @nexssp/os update && yarn test
+      - run: yarn test
         shell: pwsh
         if: ${{ env.ACT || runner.os == 'Windows'}}
-      - run: sudo npx @nexssp/os update && sudo yarn test
+      - run: sudo yarn test
         if: ${{ !env.ACT && runner.os != 'Windows' }}
