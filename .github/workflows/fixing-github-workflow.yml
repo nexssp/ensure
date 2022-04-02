@@ -45,5 +45,7 @@ jobs:
       - run: yarn test
         shell: pwsh
         if: ${{ env.ACT || runner.os == 'Windows'}}
-      - run: sudo npx @nexssp/os update && sudo yarn test
-        if: ${{ !env.ACT && runner.os != 'Windows' }}
+      - run: sudo yarn test
+        if: ${{ !env.ACT && runner.os == 'Linux' }}
+      - run: yarn test
+        if: ${{ !env.ACT && runner.os == 'macOS' }}
