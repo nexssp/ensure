@@ -2,9 +2,13 @@
 
 const plugin = require('@nexssp/plugin')
 
-if (!process.env.PATH.includes('\\Scoop\\shims')) {
-  process.env.PATH += process.env.PATH + `;` + `${require('os').homedir()}\\scoop\\shims`
-}
+// if (process.platform === 'win32') {
+//   if (process.env.Path) {
+//     process.env.Path = process.env.Path + ';' + `${require('os').homedir()}\\scoop\\shims\\`
+//   } else if (process.env.PATH) {
+//     process.env.PATH = process.env.PATH + ';' + `${require('os').homedir()}\\scoop\\shims\\`
+//   }
+// }
 
 // const _params = require('minimist')(process.argv.slice(2))
 const pluginRoot = plugin({
