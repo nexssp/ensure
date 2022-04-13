@@ -8,8 +8,10 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        node-version: [12.x, 14.x, 16.x, 17.x]
+        # os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest]
+        # node-version: [12.x, 14.x, 16.x, 17.x]
+        node-version: [16.x]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -37,6 +39,7 @@ jobs:
           npm run build --if-present
       # ls /root/.nexss/packages/
       # nexss Nexss/Test/Sequences --seq=mytestdata --debug
+
       - name: System info
         run: npx @nexssp/os env
       - run: yarn test
@@ -46,3 +49,6 @@ jobs:
         if: ${{ !env.ACT && runner.os == 'Linux' }}
       - run: yarn test
         if: ${{ runner.os == 'macOS' }}
+      - name: Testing the scoop again is it installed...
+        run: nexssp-ensure scoop
+        if: ${{ runner.os == 'Windows' }}
